@@ -1,41 +1,21 @@
 pipeline {
-    agent any
+    agent {
+		node {
+			label "built-in"
+		}
+	}
 
     stages {
-        stage ('Compile Stage') {
-
+        stage('Hello') {
             steps {
-                
-                    sh 'mvn clean compile'
-                }
-            
+                echo 'Hello World'
+            }
         }
-
-        stage ('Testing Stage') {
-
+		stage('Bye') {
             steps {
-                
-                    sh 'mvn test'
-                }
-            
-        }
-
-
-        stage ('Install Stage') {
-            steps {
-                
-                    sh 'mvn install'
-                }
-            
-        }
-        
-        stage ('Echo Branch') {
-
-            steps {
-                
-                    echo "This is dev branch"
-                }
-            
+                echo 'Bye TC'
+				
+            }
         }
     }
 }
